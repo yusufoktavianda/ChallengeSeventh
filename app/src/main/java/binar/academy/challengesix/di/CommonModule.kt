@@ -6,6 +6,7 @@ import binar.academy.challengesix.data.local.UserRepository
 import binar.academy.challengesix.data.remote.MovieDataSource
 import binar.academy.challengesix.data.remote.MovieRepository
 import binar.academy.challengesix.service.ApiService
+import com.chuckerteam.chucker.api.ChuckerInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -16,11 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module{
     single{
-           val logging = HttpLoggingInterceptor().apply {
+           HttpLoggingInterceptor().apply {
                  level = HttpLoggingInterceptor.Level.BODY
             }
             OkHttpClient.Builder()
-                .addInterceptor(logging)
+                .addInterceptor(ChuckerInterceptor(androidContext()))
                 .build()
     }
 

@@ -5,8 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import binar.academy.challengesix.databinding.FragmentHomeBinding
@@ -61,7 +59,7 @@ class HomeFragment : Fragment() {
     private fun username(){
         homeViewModel.getUsername().observe(viewLifecycleOwner){result ->
             useernameValue = result
-            binding.welcomeTextView.setText(result)
+            binding.welcomeTextView.text = result
         }
     }
     override fun onDestroyView() {

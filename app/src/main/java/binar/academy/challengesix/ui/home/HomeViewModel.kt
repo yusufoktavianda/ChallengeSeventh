@@ -1,11 +1,13 @@
 package binar.academy.challengesix.ui.home
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import binar.academy.challengesix.data.local.UserRepository
 import binar.academy.challengesix.data.remote.MovieDataSource
-import binar.academy.challengesix.data.remote.modal.Result
 import binar.academy.challengesix.data.remote.MovieRepository
-import kotlinx.coroutines.launch
+import binar.academy.challengesix.data.remote.modal.Result
 
 class HomeViewModel (private  val repository: MovieRepository, private val userRepository: UserRepository): ViewModel() {
     private val movie : MutableLiveData<List<Result>> by lazy {
